@@ -1,0 +1,19 @@
+<div>
+  <h2>Cliente</h2>
+  <div>
+    <form [formGroup]="clienteFormGroup" (ngSubmit)="salvarCliente()">
+
+      <label for="cliente-nome">Nome do Cliente: </label>
+      <input id="cliente-nome" type="text" formControlName="nomeCliente">
+
+      <label for="cliente-contato">Nome do responsável: </label>
+      <input id="cliente-contato" type="text" formControlName="nomeContato">
+      
+      <label for="cliente-cnpj">Cnpj: </label>
+      <input id="cliente-cnpj" type="text" formControlName="cnpj">
+      
+      <button type="submit" [disabled]="!clienteFormGroup.valid">Cadastrar</button>
+      <button type="button" (click)="voltar()">Voltar</button>
+    </form>    
+  </div>
+</div>

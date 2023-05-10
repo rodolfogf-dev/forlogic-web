@@ -1,0 +1,34 @@
+<div>
+    <h2>Avaliação</h2>
+    <div>
+        <form [formGroup]="avaliacaoFormGroup" (ngSubmit)="salvarAvaliacao()">
+            <label for="avaliacao-periodo">Periodo de avaliação: </label>
+            <input id="avaliacao-periodo" formControlName="nomeCliente" type="date" />
+
+            <div id="search-component">
+                <label for="search-box">Pesquisa Cliente</label>
+                <input #searchBox id="search-box" (input)="search(searchBox.value)" />
+
+                <ul class="search-result">
+                    <li *ngFor="let cliente of clientes$ | async">
+                        <button type="button" class="add-button" (click)="add(cliente.id); searchBox.value=''">
+                            {{cliente.nomeCliente}}
+                        </button>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <ul class="heroes">
+                    <li *ngFor="let clienteAvaliacao of clientesParaAdicionarAvaliacao | async">
+                        <a routerLink="/detail/{{clienteAvaliacao.id}}">
+                            <span class="badge">{{clienteAvaliacao.id}}</span> {{clienteAvaliacao.nomeCliente}}
+                        </a>
+                        <button type="button" class="delete" title="delete hero" (click)="delete(clienteAvaliacao)">x</button>
+                    </li>
+                </ul>
+            </div>
+            <button type="submit" [disabled]="!avaliacaoFormGroup.valid">Cadastrar</button>
+            <button type="button" (click)="voltar()">Voltar</button>
+        </form>
+    </div>
+</div>

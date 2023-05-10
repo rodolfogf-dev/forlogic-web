@@ -1,0 +1,9 @@
+<h2>Clientes Registrados</h2>
+<div class="heroes-menu">
+  <a *ngFor="let cliente of clientes"
+      routerLink="/detail/{{cliente.id}}">
+      {{cliente.nomeCliente}}
+  </a>
+</div>
+
+<app-hero-search></app-hero-search>
